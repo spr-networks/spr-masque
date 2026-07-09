@@ -150,6 +150,9 @@ export default function Plugin() {
       <ListHeader
         title="MASQUE Proxy"
         description="Cloudflare WARP over MASQUE (HTTP/3), exposed as a SOCKS5 proxy via usque"
+        mark="wm"
+        status={running ? (conn.OK ? 'Connected' : 'Starting') : registered ? 'Registered' : 'Not enrolled'}
+        statusAction={running && conn.OK ? 'success' : registered ? 'warning' : 'muted'}
       >
         <Button size="sm" variant="outline" onPress={refreshStatus}>
           <ButtonText>Refresh</ButtonText>
