@@ -1,0 +1,30 @@
+version: '3.4'
+
+x-labels:
+  &default-labels
+  # constant (not $CI) so digests are reproducible across CI/local
+  org.supernetworks.ci: "true"
+  org.supernetworks.version: ${RELEASE_VERSION:-latest}${RELEASE_CHANNEL:-}
+
+services:
+  spr-masque:
+    container_name: spr-masque
+    image: ghcr.io/spr-networks/spr-masque:${RELEASE_VERSION:-latest}${RELEASE_CHANNEL:-}
+    build:
+      context: "${BUILDCTX:-.}"
+      labels: *default-labels
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      masquenet:
+    volumes:
+      - "${SUPERDIR}./state/plugins/spr-masque:/state/plugins/spr-masque"
+      - "${SUPERDIR}./configs/base/config.sh:/configs/base/config.sh:ro"
+      - "${SUPERDIR}./configs/plugins/spr-masque:/configs/spr-masque"
+
+# The bridge name must match plugin.json NetworkCapabilities.Interface and the
+# Interface used in install.sh's PUT /firewall/custom_interface.
+networks:
+  masquenet:
+    driver_opts:
+      com.docker.network.bridge.name: spr-masque

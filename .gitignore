@@ -1,0 +1,7 @@
+configs/
+state/
+.github_creds
+.spr-setup-done
+node_modules
+code/masque_plugin
+frontend/build/

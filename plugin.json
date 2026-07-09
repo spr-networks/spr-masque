@@ -1,0 +1,15 @@
+{
+  "Name": "spr-masque",
+  "ComposeFilePath": "plugins/user/spr-masque/docker-compose.yml",
+  "UnixPath": "/state/plugins/spr-masque/socket",
+  "URI": "spr-masque",
+  "HasUI": true,
+  "SandboxedUI": false,
+  "InstallTokenPath": "/configs/plugins/spr-masque/api-token",
+  "NetworkCapabilities": {
+    "Interface": "spr-masque",
+    "Policies": ["wan", "dns"],
+    "Groups": ["masque"]
+  },
+  "Enabled": true
+}
