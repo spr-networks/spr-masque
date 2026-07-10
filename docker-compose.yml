@@ -10,6 +10,10 @@ services:
   spr-masque:
     container_name: spr-masque
     image: ghcr.io/spr-networks/spr-masque:${RELEASE_VERSION:-latest}${RELEASE_CHANNEL:-}
+    # SPR starts custom plugins with `docker compose up -d`; without an
+    # explicit pull policy, Compose reuses a cached `latest` image even after
+    # this repository and the published image have been updated.
+    pull_policy: ${PULL_POLICY:-always}
     build:
       context: "${BUILDCTX:-.}"
       labels: *default-labels

@@ -32,7 +32,10 @@ import {
 
 class MasqueAPI extends API {
   constructor() {
-    super(`/plugins/${api.pluginURI() || 'spr-masque'}/`)
+    // SPR_API_URL already ends in "/". Keep this relative so API.fetch does
+    // not produce //plugins/..., which the router redirects; plugin-ui treats
+    // redirects as an auth failure and navigates the iframe to /auth/validate.
+    super(`plugins/${api.pluginURI() || 'spr-masque'}/`)
   }
   status() {
     return this.get('status')
