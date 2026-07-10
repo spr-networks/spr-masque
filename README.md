@@ -26,6 +26,9 @@ by a Go API served over the plugin unix socket.
   trace URL *through* the proxy
 - Settings: IPv4/IPv6 MASQUE endpoint, SOCKS port, MASQUE connect port,
   tunnel DNS servers
+- **SPR topology integration** (`HasTopology`): the plugin contributes the
+  Cloudflare edge it is connected through (colo + exit IP, from a live trace
+  through the tunnel) to SPR's network topology view
 - Credentials stored 0600 and always redacted in API responses
 
 ## UI install
@@ -74,6 +77,7 @@ All endpoints are served on the plugin unix socket
 | PUT    | `/config`   | Validate + save settings, then restart the proxy. |
 | POST   | `/restart`  | Restart the usque SOCKS proxy. |
 | GET    | `/trace`    | Raw Cloudflare trace text fetched through the proxy (plain text). |
+| GET    | `/topology` | Plugin topology graph (`{"Nodes":[...],"Edges":[...]}`) merged by SPR into the router topology view. Always contains the `root` anchor node (`ConnType: "masque"`); when the proxy is up and a trace through the tunnel succeeds, it adds a `vpn-exit` node for the Cloudflare edge (Name = colo code, IP = WARP exit IP, Online = warp on/plus) connected to root over a `vpn` layer edge. Not registered / proxy down → root only. |
 
 ## Configuration
 

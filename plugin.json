@@ -5,6 +5,7 @@
   "URI": "spr-masque",
   "HasUI": true,
   "Icon": "Cloud",
+  "HasTopology": true,
   "SandboxedUI": false,
   "InstallTokenPath": "/configs/plugins/spr-masque/api-token",
   "NetworkCapabilities": {
