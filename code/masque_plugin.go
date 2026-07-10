@@ -83,6 +83,15 @@ func handleRegister(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("[+] registration complete")
 
+	// remember the device name used, so the UI and future re-registrations
+	// reflect reality
+	if req.DeviceName != "" && req.DeviceName != settings.DeviceName {
+		settings.DeviceName = req.DeviceName
+		if err := saveSettings(settings); err != nil {
+			fmt.Println("[-] failed to persist device name:", err)
+		}
+	}
+
 	// bring the proxy up with the fresh credentials
 	if err := proxy.Restart(settings, proxyBindIP()); err != nil {
 		fmt.Println("[-] proxy start after registration failed:", err)
@@ -271,6 +280,7 @@ func main() {
 	mux.HandleFunc("PUT /config", handleConfig)
 	mux.HandleFunc("POST /restart", handleRestart)
 	mux.HandleFunc("GET /trace", handleTrace)
+	mux.HandleFunc("GET /topology", handleTopology)
 	mux.Handle("/", spaHandler{staticPath: "/ui", indexPath: "index.html"})
 
 	os.Remove(UNIX_PLUGIN_LISTENER)
