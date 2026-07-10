@@ -1,5 +1,7 @@
 # spr-masque
 
+<img width="850" alt="spr-masque UI preview" src="docs/screenshot.png" />
+
 Cloudflare WARP MASQUE proxy plugin for [SPR](https://github.com/spr-networks/super).
 
 ## About
