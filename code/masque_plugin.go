@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -255,6 +256,11 @@ func logRequest(handler http.Handler) http.Handler {
 }
 
 func main() {
+	// Unix sockets are created as 0777 minus the process umask. Set a
+	// restrictive umask up front so the plugin socket is group-accessible
+	// without relying on chmod, which Docker Desktop bind mounts may reject.
+	syscall.Umask(0007)
+
 	if err := ensureConfigDir(); err != nil {
 		fmt.Println("[-] failed to create config dir:", err)
 	}
@@ -290,7 +296,7 @@ func main() {
 		panic(err)
 	}
 	if err := os.Chmod(UNIX_PLUGIN_LISTENER, 0770); err != nil {
-		panic(err)
+		fmt.Println("[!] socket chmod unavailable; using creation permissions:", err)
 	}
 
 	server := http.Server{Handler: logRequest(mux)}
