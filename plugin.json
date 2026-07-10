@@ -4,6 +4,7 @@
   "UnixPath": "/state/plugins/spr-masque/socket",
   "URI": "spr-masque",
   "HasUI": true,
+  "Icon": "Cloud",
   "SandboxedUI": false,
   "InstallTokenPath": "/configs/plugins/spr-masque/api-token",
   "NetworkCapabilities": {

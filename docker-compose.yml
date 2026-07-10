@@ -26,5 +26,6 @@ services:
 # Interface used in install.sh's PUT /firewall/custom_interface.
 networks:
   masquenet:
+    name: spr-masque
     driver_opts:
       com.docker.network.bridge.name: spr-masque
