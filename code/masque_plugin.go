@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-var UNIX_PLUGIN_LISTENER = "/state/plugins/spr-masque/socket"
+var UNIX_PLUGIN_LISTENER = "/run/spr-krun-plugin/spr-masque.sock"
 
 // getContainerIP returns the container's address on the spr-masque bridge
 // (eth0). The SOCKS listener binds here so it is only reachable from the
