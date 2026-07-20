@@ -1,6 +1,6 @@
 {
   "Name": "spr-masque",
-  "ComposeFilePath": "plugins/user/spr-masque/docker-compose-krun.yml",
+  "Runtime": "kvm",
   "UnixPath": "/state/plugins/spr-masque/socket",
   "URI": "spr-masque",
   "HasUI": true,
