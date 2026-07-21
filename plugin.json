@@ -9,7 +9,7 @@
   "SandboxedUI": false,
   "InstallTokenPath": "/configs/plugins/spr-masque/api-token",
   "NetworkCapabilities": {
-    "Interface": "kmasque0",
+    "Interface": "spr-masque",
     "DeviceMAC": "02:53:50:52:4b:08",
     "Policies": ["wan", "dns"],
     "Groups": ["masque"]
