@@ -7,7 +7,6 @@
   "Icon": "Cloud",
   "HasTopology": true,
   "SandboxedUI": false,
-  "InstallTokenPath": "/configs/plugins/spr-masque/api-token",
   "NetworkCapabilities": {
     "Interface": "spr-masque",
     "DeviceMAC": "02:53:50:52:4b:08",
