@@ -61,14 +61,14 @@ cd spr-masque
 Then register either from the UI or via the API:
 
 ```bash
-curl --unix-socket /home/spr/super/state/plugins/spr-masque/socket \
+curl --unix-socket /home/spr/super/state/plugins/spr-masque/socket.sock \
   -X POST http://localhost/register -d '{}'
 ```
 
 ## API
 
 All endpoints are served on the plugin unix socket
-(`/state/plugins/spr-masque/socket`); SPR proxies them at
+(`/state/plugins/spr-masque/socket.sock`); SPR proxies them at
 `/plugins/spr-masque/...`.
 
 | Method | Path        | Description |

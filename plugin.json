@@ -1,7 +1,7 @@
 {
   "Name": "spr-masque",
   "Runtime": "kvm",
-  "UnixPath": "/state/plugins/spr-masque/socket",
+  "UnixPath": "/state/plugins/spr-masque/socket.sock",
   "URI": "spr-masque",
   "HasUI": true,
   "Icon": "Cloud",
