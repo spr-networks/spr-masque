@@ -1,14 +1,15 @@
 {
   "Name": "spr-masque",
-  "ComposeFilePath": "plugins/user/spr-masque/docker-compose.yml",
+  "Runtime": "kvm",
   "UnixPath": "/state/plugins/spr-masque/socket",
   "URI": "spr-masque",
   "HasUI": true,
   "Icon": "Cloud",
   "HasTopology": true,
-  "SandboxedUI": false,
+  "SandboxedUI": true,
   "NetworkCapabilities": {
     "Interface": "spr-masque",
+    "DeviceMAC": "02:53:50:52:4b:08",
     "Policies": ["wan", "dns"],
     "Groups": ["masque"]
   },
